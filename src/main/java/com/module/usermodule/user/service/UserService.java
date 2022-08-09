@@ -1,6 +1,6 @@
 package com.module.usermodule.user.service;
 
-import com.module.usermodule.user.entity.User;
+import com.module.usermodule.user.entity.Users;
 import com.module.usermodule.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +17,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    private User saveUser(User user){
-        Optional<User> optionalUser =userRepository.findByEmail(user.getEmail());
-        User findUser = optionalUser.orElseThrow(()->new RuntimeException());
+    private Users saveUser(Users user){
+        Optional<Users> optionalUser =userRepository.findByEmail(user.getEmail());
+        Users findUser = optionalUser.orElseThrow(()->new RuntimeException());
         return findUser;
     }
 }

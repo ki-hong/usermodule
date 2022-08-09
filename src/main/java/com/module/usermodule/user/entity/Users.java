@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends Auditable {
+public class Users extends Auditable {
 
     @Id
     private Long id;
@@ -40,7 +40,7 @@ public class User extends Auditable {
     }
 
     @Builder
-    public User(Long id, String email, String name, String phone, String nickname) {
+    public Users(Long id, String email, String name, String phone, String nickname) {
         this.id = id;
         this.email = email;
         this.name = name;
