@@ -16,10 +16,12 @@ public class Users extends Auditable {
     @Id @GeneratedValue
     private Long id;
     private String email;
+    private String password;
     private String name;
     private String phone;
     private String nickname;
-
+    @Enumerated(EnumType.STRING)
+    private Role role=Role.ROLE_USER;
     @Enumerated(EnumType.STRING)
     private Status status = Status.INACTIVE;
 
@@ -40,16 +42,36 @@ public class Users extends Auditable {
         }
     }
 
+    public enum Role{
+        ROLE_USER("일반유저"),
+        ROLE_ADMIN("관리자");
+
+        private String roleDescription;
+
+        Role(String roleDescription) {
+            this.roleDescription = roleDescription;
+        }
+    }
+
     @Builder
-    public Users(Long id, String email, String name, String phone, String nickname) {
+    public Users(Long id, String email, String password, String name, String phone, String nickname, Status status) {
         this.id = id;
         this.email = email;
+        this.password = password;
         this.name = name;
         this.phone = phone;
         this.nickname = nickname;
+        this.status = status;
     }
+
+
+
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
