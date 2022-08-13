@@ -44,5 +44,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity login(@RequestParam)
+    public ResponseEntity login(@RequestParam){
+
+    }
 }
